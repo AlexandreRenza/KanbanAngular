@@ -1,0 +1,49 @@
+<body>
+    <div class="titulo"><h3 style="text-align: center">New History</h3><hr/></div>
+
+    <form class="formulario" name="historyForm">
+        <div class="form-group largura">
+            <div>
+                <label >History Name</label>
+                <input class="form form-control" ng-model="newHistory.name" name="name" >
+                <input class="form form-control" ng-model="newHistory.id" name="id" ng-show="false" >           
+            </div>
+            <div>
+                <label >Description</label>
+                <input class="form form-control" ng-model="newHistory.description" name="description" >                          
+            </div>
+            <div>
+                <label >Criteria</label>
+                <input class="form form-control" ng-model="newHistory.criteria" name="criteria" >                          
+            </div>
+
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-success" ng-click="createHistory()" ng-disabled="checkInput()">Save</button>
+        </div>  
+    </form>
+    
+    <div class="titulo"><h3 style="text-align: center">My Histories</h3><hr/></div>
+
+    <div class="container">
+            
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th class="w-75">History Name</th>
+                    <th class="">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="history in histories">
+                    <td class="">{{history.name}}</td>
+                    <th class="" ng-show='false'>{{history.id}}</th>
+                    <td class="">     
+                            <button ng-click="toEdit(history.id)"><i class='fa fa-edit'></i></button>
+                            <button ng-click="toDelete(history.id)"><i class='fa fa-trash'></i></button>
+                    </td>
+                  </tbody>
+              </table>
+              </div>
+          </div>

@@ -1,0 +1,58 @@
+<div class="titulo"><h3 style="text-align: center">New Sprint</h3><hr/></div>
+
+<form class="formulario" name="sprintForm">
+    <div class="form-group largura">
+        <label >Sprint Name</label>
+        <input class="form form-control" ng-model="newSprint.name" name="name" >
+        <input class="form form-control" ng-model="newSprint.id" name="id" ng-show="false" >       
+    </div>
+    <div class="form-group largura">
+        <label >Sprint Goal</label>
+        <input class="form form-control" ng-model="newSprint.goal" name="goal">  
+    </div>
+    <div class="form-group largura">
+        <div class='row'>
+             <div class='col-6'>
+                <label >Start Date</label>
+                <input class="form form-control" ng-model="newSprint.stdate" name="stdate">
+            </div>
+             <div class='col-6'>
+                <label >End Date</label>
+                <input class="form form-control" ng-model="newSprint.enddate" name="enddate">
+             </div>
+            
+        </div>  
+    </div>
+    <div class="form-group">
+        <button type="button" class="btn btn-success" ng-click="createSprint()" ng-disabled="checkInput()">Save</button>
+    </div>  
+</form>
+
+<div class="titulo"><h3 style="text-align: center">My Sprints</h3><hr/></div>
+
+<div class="container">
+        
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th class="w-65">Sprint Name</th>
+                <th class="">Start Date</th>
+                <th class="">End Date</th>
+                <th class="">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="sprint in sprints">
+                <td class="">{{sprint.name}}</td>
+                <th class="">{{sprint.stdate}}</th>
+                <th class="">{{sprint.enddate}}</th>
+                <th class="" ng-show='false'>{{sprint.id}}</th>
+                <td class="">     
+                        <button ng-click="toEdit(sprint.id)"><i class='fa fa-edit'></i></button>
+                        <button ng-click="toDelete(sprint.id)"><i class='fa fa-trash'></i></button>
+                </td>
+              </tbody>
+          </table>
+          </div>
+      </div>
