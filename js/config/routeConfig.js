@@ -16,8 +16,8 @@ angular.module("kanbanApp").config(function($routeProvider){
             templateUrl: "view/history.html",
             controller: "historyCtl",
             resolve: {
-                histories: function (historiesApiService) {
-                    return historiesApiService.getHistories();
+                histories: function (projectsApiService) {
+                    return projectsApiService.getProjectsByID(sessionStorage.getItem("project_id"));
                 }
             }
         
@@ -28,8 +28,8 @@ angular.module("kanbanApp").config(function($routeProvider){
             templateUrl: "view/sprint.html",
             controller: "sprintCtl",
             resolve: {
-                sprints: function (sprintsApiService) {
-                    return sprintsApiService.getSprints();
+                sprints: function (projectsApiService) {
+                    return projectsApiService.getProjectsByID(sessionStorage.getItem("project_id"));
                 }
             }
         
@@ -42,6 +42,14 @@ angular.module("kanbanApp").config(function($routeProvider){
         
         });
 
-        $routeProvider.otherwise({redirectTo: "/project"});
+
+        $routeProvider.when("/alertproject", {
+
+            templateUrl: "view/alertproject.html"
+            
+        
+        });
+
+       /// $routeProvider.otherwise({redirectTo: "/project"});
 
 });

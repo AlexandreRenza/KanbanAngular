@@ -1,1 +1,1 @@
-angular.module("kanbanApp", ['ngRoute']);
+angular.module("kanbanApp", ['ngRoute', 'angularjs-dropdown-multiselect']);

@@ -4,9 +4,17 @@
     <div class="form-group largura">
         <label for="exampleFormControlInput1">Project Name</label>
         <input class="form form-control" ng-model="newProject.name" name="name" >
-        <input class="form form-control" ng-model="newProject.id" name="id" ng-show="false" >
-       
+        <input class="form form-control" ng-model="newProject.id" name="id" ng-show="false" >       
     </div>
+    <div>
+      <label>Status</label>
+      <select class="browser-default custom-select" ng-model="newProject.status">
+              <option selected>Select Project Status</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Closed">Closed</option>
+              <option value="Canceled">Canceled</option>
+      </select>
+  </div>
     <div class="form-group">
         <button type="button" class="btn btn-success" ng-click="createProject()" ng-disabled="checkInput()">Save</button>
     </div>  
@@ -26,13 +34,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="project in projects">
+              <tr ng-repeat="project in projects.projects">
                 <td class="">{{project.name}}</td>
                 <th class="">{{project.status}}</th>
                 <th class="" ng-show='false'>{{project.id}}</th>
                 <td class="">     
-                        <button ng-click="toEdit(project.id)"><i class='fa fa-edit'></i></button>
-                        <button ng-click="toDelete(project.id)"><i class='fa fa-trash'></i></button>
+                        <button ng-click='toEdit(project.id)'><i class='fa fa-edit'></i></button>
+                        <button ng-click='toDelete(project.id)'><i class='fa fa-trash'></i></button>
+
                 </td>
               </tbody>
           </table>

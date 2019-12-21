@@ -11,22 +11,41 @@
         <input class="form form-control" ng-model="newSprint.goal" name="goal">  
     </div>
     <div class="form-group largura">
-        <div class='row'>
-             <div class='col-6'>
+        <div class='row margin-box' >
+             <div class='col-4'>
                 <label >Start Date</label>
-                <input class="form form-control" ng-model="newSprint.stdate" name="stdate">
+                <input class="form form-control" ng-model="newSprint.startDate" name="startDate">
             </div>
-             <div class='col-6'>
+             <div class='col-4'>
                 <label >End Date</label>
-                <input class="form form-control" ng-model="newSprint.enddate" name="enddate">
+                <input class="form form-control" ng-model="newSprint.endDate" name="endDate">
              </div>
+
+             <div class='col-4'>
+                <label>Select Histories</label>
+                <div 
+                  ng-dropdown-multiselect="" 
+                  options="myDropdownOptions" 
+                  selected-model="myDropdownModel" 
+                  extra-settings="myDropdownSettings"></div>
+            </div>
+
             
         </div>  
     </div>
+
+
+
     <div class="form-group">
         <button type="button" class="btn btn-success" ng-click="createSprint()" ng-disabled="checkInput()">Save</button>
     </div>  
+
+
+
+
 </form>
+
+
 
 <div class="titulo"><h3 style="text-align: center">My Sprints</h3><hr/></div>
 
@@ -43,10 +62,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="sprint in sprints">
+              <tr ng-repeat="sprint in sprints.sprints">
                 <td class="">{{sprint.name}}</td>
-                <th class="">{{sprint.stdate}}</th>
-                <th class="">{{sprint.enddate}}</th>
+                <th class="">{{sprint.startDate}}</th>
+                <th class="">{{sprint.endDate}}</th>
                 <th class="" ng-show='false'>{{sprint.id}}</th>
                 <td class="">     
                         <button ng-click="toEdit(sprint.id)"><i class='fa fa-edit'></i></button>

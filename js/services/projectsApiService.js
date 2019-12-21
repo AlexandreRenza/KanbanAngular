@@ -6,6 +6,12 @@ angular.module("kanbanApp").service("projectsApiService", function($http, config
 
     };
 
+    this.getProjectsByID = function(id){        
+        
+        return $http.get( config.baseUrl + "/projects/"+ id);
+
+    };
+
     this.postProjects = function(project){        
         
         return $http.post( config.baseUrl + "/projects", project);
@@ -13,9 +19,9 @@ angular.module("kanbanApp").service("projectsApiService", function($http, config
     };
 
 
-    this.delProjects = function(project){        
+    this.delProjects = function(id){        
         
-        return $http.post( config.baseUrl + "/delprojects", project);
+        return $http.delete( config.baseUrl + "/projects/"+ id);
 
     };
 

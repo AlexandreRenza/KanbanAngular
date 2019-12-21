@@ -16,7 +16,19 @@
                 <label >Criteria</label>
                 <input class="form form-control" ng-model="newHistory.criteria" name="criteria" >                          
             </div>
+            <div>
+                <label>Status</label>
+                <select class="browser-default custom-select" ng-model="newHistory.status">
+                        <option selected>Select Project Status</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Acepted">Acepted</option>
+                        <option value="Prepared">Prepared</option>
+                        <option value="Refused">Refused</option>
+                        <option value="Canceled">Canceled</option>
+                </select>
+            </div>
 
+            
         </div>
         <div class="form-group">
             <button type="button" class="btn btn-success" ng-click="createHistory()" ng-disabled="checkInput()">Save</button>
@@ -32,12 +44,14 @@
                 <thead>
                   <tr>
                     <th class="w-75">History Name</th>
+                    <th class="w-75">Status</th>
                     <th class="">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="history in histories">
+                  <tr ng-repeat="history in histories.histories">
                     <td class="">{{history.name}}</td>
+                    <td class="">{{history.status}}</td>
                     <th class="" ng-show='false'>{{history.id}}</th>
                     <td class="">     
                             <button ng-click="toEdit(history.id)"><i class='fa fa-edit'></i></button>
