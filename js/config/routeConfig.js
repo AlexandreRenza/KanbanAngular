@@ -37,7 +37,8 @@ angular.module("kanbanApp").config(function($routeProvider){
 
         $routeProvider.when("/board", {
 
-            templateUrl: "view/board.html"
+            templateUrl: "view/board.html",
+            controller: "boardCtl"
             
         
         });

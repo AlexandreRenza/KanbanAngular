@@ -1,32 +1,53 @@
+<h1>Demo: Multiselect Lists</h1>
 
-    <div class="board">
 
-    <div class="row">
-        <div class="col-sm kanbanTitle">Backlog</div>
-        <div class="col-sm kanbanTitle">To Do</div>
-        <div class="col-sm kanbanTitle">In Progress</div>
-        <div class="col-sm kanbanTitle">Done</div>
+  <div class="space1">
+  </div>
+  <div class="space">
+  <label>Sprint:</label>
+  <select class="custom-select col-md-4" ng-model="sprintList" ng-options="sprint as sprint.name for sprint in sprints.sprints track by sprint.id" ng-change="setSprintChange(sprint.id)">
+        <option selected value="">Select Sprint</option>
+  </select>
+  </div>
+  <div class="space2">
+  </div>
+
+
+<div class="instruct">
+    <strong>Instructions:</strong>
+    Click on items to select/unselect them. When dragging, all selected items will be moved at once.
+</div>
+
+
+<div class="multiDemo row">
+
+    <div class="col-md-12 boardPadding">
+        <div class="row">
+            <div ng-repeat="list in models" class="col-md-4">
+                <div class="card bg-light">
+                    <div class="card-header">
+                        <h5 class="">{{list.listName}}</h5>
+                    </div>
+                    <div class="card-body" ng-include="'./view/multi.html'"></div>
+                </div>
+            </div>
+        </div>
+
+        <div view-source="multi"></div>
+
     </div>
-      <div class="row grid-divider">
-        <div class="col-sm my-1" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-          <div class="card" draggable="true" ondragstart="drag(event)" id="drag1">
-            <div class="card-body"  >Some content</div>
-          </div>
-        </div>
-        <div class="col-sm my-1" id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
-          <div class="card" draggable="true" ondragstart="drag(event)" id="drag2">
-            <div class="card-body"  >Some content Some content Some content Some content Some content</div>
-          </div>
-        </div>  
-        <div class="col-sm my-1" id="div3" ondrop="drop(event)" ondragover="allowDrop(event)">
-          <div class="card" draggable="true" ondragstart="drag(event)" id="drag3" >
-            <div class="card-body" >Some content Some content Some content</div>
-          </div>
-        </div>
-              <div class="col-sm my-1" id="div4" ondrop="drop(event)" ondragover="allowDrop(event)">
-          <div class="card" draggable="true" ondragstart="drag(event)" id="drag4">
-            <div class="card-body"  >Some content Some content Some content</div>
-          </div>
-        </div>
+
+
+
+</div>
+
+<div class="col-md-4"  ng-show = "false">
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">Generated Model</h3>
       </div>
-    </div>  
+      <div class="panel-body">
+          <pre class="code">{{modelAsJson}}</pre>
+      </div>
+  </div>
+</div>

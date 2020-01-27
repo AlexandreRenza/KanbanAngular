@@ -1,0 +1,36 @@
+<table>
+    <thead>
+        <tr>
+            <th ng-bind="labelListaA"></th>
+            <th id="thBotoes"></th>
+            <th ng-bind="labelListaB"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>
+                <select multiple name="listaElements" id="listaElements"
+                        ng-model="elementToAdd"
+                        ng-options="item.{{exibir}} for item in listaA | orderBy:exibir track by item.{{exibir}}"
+                        ng-dblclick="doMoveOneElement(directionListAToListB)" ng-disabled="desabilitado">
+                </select>
+            </td>
+
+            <td id="tdBotoes">
+                <input ng-model="btnAdicionarItem" class="form-control" title="Adicionar item" type="button" value=">" ng-click="doMoveOneElement(directionListAToListB)" ng-disabled="listaA.length == 0 || desabilitado">
+                <input ng-model="btnRemoverItem" class="form-control" title="Remover item" type="button" value="<" ng-click="doMoveOneElement(!directionListAToListB)" ng-disabled="listaB.length == 0 || desabilitado">
+                <input ng-model="btnAdicionarTodos" class="form-control" title="Adicionar todos" type="button" value=">>" ng-click="doMoveAllElement(directionListAToListB)" ng-disabled="listaA.length == 0 || desabilitado">
+                <input ng-model="btnRemoverTodos" class="form-control" title="Remover todos" type="button" value="<<" ng-click="doMoveAllElement(!directionListAToListB)" ng-disabled="listaB.length == 0 || desabilitado">
+            </td>
+
+            <td>
+                <select multiple name="listaElementsSelected" id="listaElementsSelected"
+                        ng-model="elementToDelete"
+                        ng-options="item.{{exibir}} for item in listaB | orderBy:exibir track by item.{{exibir}}"
+                        ng-dblclick="doMoveOneElement(!directionListAToListB)" ng-disabled="desabilitado">
+                </select>
+            </td>
+        </tr>
+    </tbody>
+</table>

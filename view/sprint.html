@@ -12,25 +12,14 @@
     </div>
     <div class="form-group largura">
         <div class='row margin-box' >
-             <div class='col-4'>
+             <div class='col-6'>
                 <label >Start Date</label>
                 <input class="form form-control" ng-model="newSprint.startDate" name="startDate">
             </div>
-             <div class='col-4'>
+             <div class='col-6'>
                 <label >End Date</label>
                 <input class="form form-control" ng-model="newSprint.endDate" name="endDate">
-             </div>
-
-             <div class='col-4'>
-                <label>Select Histories</label>
-                <div 
-                  ng-dropdown-multiselect="" 
-                  options="myDropdownOptions" 
-                  selected-model="myDropdownModel" 
-                  extra-settings="myDropdownSettings"></div>
-            </div>
-
-            
+             </div>            
         </div>  
     </div>
 
@@ -70,6 +59,7 @@
                 <td class="">     
                         <button ng-click="toEdit(sprint.id)"><i class='fa fa-edit'></i></button>
                         <button ng-click="toDelete(sprint.id)"><i class='fa fa-trash'></i></button>
+                        <button ng-click="open(sprint.id)"><i class='fa fa-list'></i></button>                  
                 </td>
               </tbody>
           </table>

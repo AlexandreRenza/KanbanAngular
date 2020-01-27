@@ -1,4 +1,4 @@
-angular.module("kanbanApp").controller("sprintCtl", function($scope, sprints, sprintsApiService,  projectsApiService, $timeout, $route, $http, $interval){
+angular.module("kanbanApp").controller("sprintCtl", function($scope, sprints, sprintsApiService,  projectsApiService, $timeout, $route, $http, $interval, $uibModal){
 
  
     $scope.message = "Kanban";
@@ -13,8 +13,8 @@ angular.module("kanbanApp").controller("sprintCtl", function($scope, sprints, sp
         // $scope.sprints.push({id: vId, name: $scope.newSprint.name, goal: $scope.newSprint.goal, stdate: $scope.newSprint.stdate, enddate: $scope.newSprint.enddate });
         sprintsApiService.postSprints({name: $scope.newSprint.name,
                           goal: $scope.newSprint.goal, 
-                          stdate: $scope.newSprint.startDate, 
-                          enddate: $scope.newSprint.endDate, 
+                          startDate: $scope.newSprint.startDate, 
+                          endDate: $scope.newSprint.endDate, 
                           status: $scope.newSprint.status, 
                           project_id:sessionStorage.getItem('project_id')});
 
@@ -24,8 +24,8 @@ angular.module("kanbanApp").controller("sprintCtl", function($scope, sprints, sp
         sprintsApiService.putSprints($scope.newSprint.id, {
                                         name: $scope.newSprint.name,
                                         goal: $scope.newSprint.goal, 
-                                        stdate: $scope.newSprint.startDate, 
-                                        enddate: $scope.newSprint.endDate, 
+                                        startDate: $scope.newSprint.startDate, 
+                                        endDate: $scope.newSprint.endDate, 
                                         status: $scope.newSprint.status, 
                                         project_id:sessionStorage.getItem('project_id')});
       } 
@@ -55,11 +55,9 @@ angular.module("kanbanApp").controller("sprintCtl", function($scope, sprints, sp
     };
 
     $scope.toDelete = function(id){   
-      historiesApiService.delSprints(id);   
+      sprintsApiService.delSprints(id);   
       var pos = $scope.sprints.sprints.findIndex( sprint => sprint.id === id );
       $scope.sprints.sprints.splice(pos, 1);
-      
-
     };
 
     $scope.checkInput = function(){
@@ -67,54 +65,22 @@ angular.module("kanbanApp").controller("sprintCtl", function($scope, sprints, sp
       return false;
     };  
     
+    $scope.open = function(id) {
 
-
-
- 
-    $scope.myDropdownOptions = [ ];
-
-  //  $scope.myDropdownOptions = [{
-   //   id: $scope.sprints.sprints[0].id,
-   //   label: $scope.sprints.sprints[0].name
-  //  }];
-
-    console.log('tamanho: '+ $scope.sprints.sprints.length );
-    
-    for (i=0; i<$scope.sprints.sprints.length;i++){
-
-      console.log('loop: '+ $scope.sprints.sprints[i].name );
-      label = $scope.sprints.sprints[i].name;
-      id = $scope.sprints.sprints[i].id;
-
-      $scope.myDropdownOptions.push({id:id, label:label});
-
-    }
-
-    $scope.myDropdownModel = [];
-
-
-  
-    $scope.myDropdownSettings = {
-      styleActive: true,
-      checkBoxes: true,
-      enableSearch: true,
-      selectedToTop: true,
-      scrollable: true,      
-      buttonClasses: 'btn btn-primary dropdown-toggle',
-      smartButtonTextProvider(selectionArray) {
+      $scope.sprintSelected = id;
+      ///console.log("aqui");
+      var modalInstance =  $uibModal.open({        
+        templateUrl: "./view/template/modalSelectHistories.html",
+        controller: "historiesOfSprintCtl",
+        'modal-in-class': 'show',
+        size: 'lg',
+        scope: $scope,
         
-        if (selectionArray.length === 1) {
-          return selectionArray[0].label;
-        } else {
-          return selectionArray.length + ' Selected';
-        }
-      }
- 
-    };
+      });
+      
 
-  
-    $scope.cars = [{id:1, name: 'Audi'}, {id:2, name: 'BMW'}, {id:1, name: 'Honda'}];
-    $scope.selectedCar = [];
+      
+    };
 
 
 

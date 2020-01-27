@@ -13,6 +13,7 @@ angular.module("kanbanApp").controller("historyCtl", function($scope, histories,
                 description: $scope.newHistory.description, 
                 criteria: $scope.newHistory.criteria, 
                 status: $scope.newHistory.status, 
+                implStatus: "To Do", 
                 project_id:sessionStorage.getItem('project_id')});
         } else {
             ///$scope.histories[$scope.histories.findIndex( history => history.id === $scope.newHistory.id )] = $scope.newHistory;
@@ -21,6 +22,7 @@ angular.module("kanbanApp").controller("historyCtl", function($scope, histories,
                                                 description: $scope.newHistory.description, 
                                                 criteria: $scope.newHistory.criteria, 
                                                 status: $scope.newHistory.status, 
+                                                implStatus: $scope.newHistory.implStatus,
                                                 project_id:sessionStorage.getItem('project_id')});           
         } 
         

@@ -40,14 +40,15 @@
               <table class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th class="w-75">History Name</th>
-                    <th class="">Actions</th>
+                    <th class="w-50">History Name</th>
+                    <th class="w-20">Status</th>
+                    <th class="w-20">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr ng-repeat="history in histories">
                     <td class="">{{history.name}}</td>
-                    <th class="" ng-show='false'>{{history.id}}</th>
+                    <td class="" ng-show='false'>{{history.id}}</td>
                     <td class="">     
                             <button ng-click="toEdit(history.id)"><i class='fa fa-edit'></i></button>
                             <button ng-click="toDelete(history.id)"><i class='fa fa-trash'></i></button>

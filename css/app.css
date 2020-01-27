@@ -15,6 +15,63 @@
     margin-top: 100px;
 }
 
+.space1{
+
+    margin-top: 20px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+    vertical-align: middle;
+    height: 5px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(215, 253, 231);
+    justify-content: center;
+}
+
+.space2{
+
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+    vertical-align: middle;
+    height: 5px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(215, 253, 231);
+    justify-content: center;
+}
+
+.space{
+
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+    vertical-align: middle;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(215, 253, 231);
+    justify-content: center;
+}
+
+.instruct{
+    padding-left: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    height: 20px;
+    vertical-align: middle;
+    background-color: rgba(245, 245, 245, 0.884);
+    font-size: 12px;
+}
+
+.content {
+    height: 100%;
+  
+    
+}
+
 .formulario{
     margin-left:100px;
     margin-right: 100px;
@@ -26,13 +83,30 @@
     margin-bottom: 1rem;
 }
 
-
 hr {
     margin-top: 10px;
     margin-bottom: 1rem;
     border: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+.modal.fade.in {
+    opacity: 1;
+ }
+ .modal.fade .modal-dialog {
+    transform: translate(0, 0) !important;
+ }
+ 
+ .modal-backdrop.fade {
+   opacity: 0.5 !important;
+  }
+ .modal-header{
+    display: block;
+ }
+ .modal-content{
+    border-radius: 1rem !important;
+ }
+
 
 
 
